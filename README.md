@@ -1,91 +1,12 @@
 AdaptiveRun – An RL-Based Endless Runner Game
 📌 Problem Statement
 
-Traditional endless-runner games use fixed or manually tuned difficulty levels. This makes the game either too easy or too hard, and does not adapt to the player's skill.
-The goal of this project is to build a 3D endless-runner where the game difficulty automatically adjusts in real-time using Reinforcement Learning (RL).
+Traditional endless-runner games rely on fixed or manually tuned difficulty levels, which often makes gameplay either too easy or too hard. They do not adapt to the player's skill in real time. This project solves that limitation by creating a 3D endless-runner where the game difficulty automatically adjusts using a lightweight Reinforcement Learning (RL) agent. The goal is to deliver a smoother, more balanced gameplay experience that becomes progressively challenging based on player performance.
 
 🧠 Approach
 
-The system uses a lightweight Q-learning style RL agent that observes the game state and periodically adjusts difficulty parameters.
+The game uses a simple Q-learning style RL agent that periodically observes the game state and adjusts difficulty parameters. The agent receives a compact state representation containing the current difficulty value, scaled player score, scroll speed, and the spawn frequencies of obstacles and coins. Based on this state, the RL model selects one of seven actions, such as increasing or decreasing speed, modifying spawn frequencies, or adjusting the overall difficulty factor. The reward function encourages the agent to maintain a balanced difficulty range, penalizing extreme or unfair difficulty spikes. Over time, this allows the game to “self-tune” difficulty dynamically during gameplay.
 
-State Features
+🎮 Results
 
-Current difficulty value
-
-Player score (scaled)
-
-Scroll speed
-
-Obstacle spawn frequency
-
-Coin spawn frequency
-
-Actions
-The RL agent selects from 7 possible difficulty adjustments, such as:
-
-Increase/decrease scroll speed
-
-Increase/decrease obstacle frequency
-
-Increase/decrease coin frequency
-
-Adjust overall difficulty factor
-
-Reward Function
-The agent receives:
-
-Positive reward for staying in a moderate difficulty band
-
-Negative reward for making the game too easy or too hard
-
-Game Engine
-
-Built using Panda3D
-
-Simple 3-lane runner
-
-Player can move left/right and jump
-
-Coins increase score
-
-Obstacles end the game
-
-On “Game Over,” a UI screen shows:
-
-Final score
-
-Coins collected
-
-Try Again button
-
-🎮 Key Features
-
-Adaptive difficulty using RL
-
-Dynamic spawning of coins and obstacles
-
-Smooth 3D rendering using Panda3D
-
-Full-screen gameplay experience
-
-Restartable game loop with clean UI
-
-Simple physics (jump + gravity)
-
-📊 Results
-
-The RL agent successfully learns to keep the game within a balanced difficulty range.
-
-The difficulty becomes dynamic, not static—making the gameplay feel smoother and more responsive.
-
-The agent visibly changes:
-
-speed
-
-obstacle frequency
-
-coin frequency
-
-…which creates different difficulty patterns during the run.
-
-Players experience a progressively challenging yet fair gameplay curve.
+The RL agent successfully adapts game difficulty while maintaining smooth playability. Players experience a more personalized difficulty curve, where speed, obstacle density, and coin frequency adjust based on their skill. The game noticeably shifts difficulty patterns during a run, but never becomes impossible thanks to safe clamping. Overall, AdaptiveRun demonstrates how even a simple RL agent can create engaging, responsive gameplay without pre-programmed difficulty stages.
